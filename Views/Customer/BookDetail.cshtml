@@ -1,0 +1,102 @@
+@model GrandLineBooks.Models.Service
+@{
+    ViewData["Title"] = Model.Title;
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="customer-card">
+    <div class="row">
+        <div class="col-md-4">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="@Model.ImageUrl" class="img-fluid rounded shadow" alt="@Model.Title" style="width: 100%; border: 3px solid var(--pirate-gold);">
+            }
+            else
+            {
+                <div style="height: 400px; background: linear-gradient(135deg, #7bd0ff 0%, #2aa9a1 100%); display: flex; align-items: center; justify-content: center; border-radius: 10px; border: 3px solid rgba(19,111,189,0.25);">
+                    <i class="fas fa-shirt fa-5x" style="color: #ffffff;"></i>
+                </div>
+            }
+        </div>
+
+        <div class="col-md-8">
+            <span class="badge bg-info mb-2" style="font-size: 1rem; padding: 8px 15px;">@Model.Category</span>
+            <h2 class="mb-3" style="color: var(--pirate-gold); font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">@Model.Title</h2>
+            
+            <p class="mb-3" style="color: white;">
+                <i class="fas fa-user" style="color: var(--pirate-gold);"></i> 
+                <strong style="color: var(--pirate-gold);">Jenis/Penyedia:</strong> @Model.Author
+            </p>
+            <p class="mb-3" style="color: white;">
+                <i class="fas fa-barcode" style="color: var(--pirate-gold);"></i> 
+                <strong style="color: var(--pirate-gold);">SKU:</strong> @Model.ISBN
+            </p>
+            <p class="mb-3" style="color: white;">
+                <i class="fas fa-calendar" style="color: var(--pirate-gold);"></i> 
+                <strong style="color: var(--pirate-gold);">Tersedia Sejak:</strong> @Model.PublishedDate.ToString("dd MMMM yyyy")
+            </p>
+
+            <h3 class="mb-3" style="color: #4caf50; font-weight: bold;">Rp @Model.Price.ToString("N0")</h3>
+
+            <div class="mb-4">
+                @if (Model.Stock > 10)
+                {
+                    <span class="badge bg-success" style="font-size: 1rem; padding: 8px 15px;">
+                        <i class="fas fa-check"></i> Stok Tersedia (@Model.Stock)
+                    </span>
+                }
+                else if (Model.Stock > 0)
+                {
+                    <span class="badge bg-warning" style="font-size: 1rem; padding: 8px 15px; color: var(--pirate-black);">
+                        <i class="fas fa-exclamation"></i> Stok Terbatas (@Model.Stock)
+                    </span>
+                }
+                else
+                {
+                    <span class="badge bg-danger" style="font-size: 1rem; padding: 8px 15px;">
+                        <i class="fas fa-times"></i> Stok Habis
+                    </span>
+                }
+            </div>
+
+            @if (Model.Stock > 0)
+            {
+                <form method="post" asp-action="AddToCart" asp-controller="Customer">
+                    <input type="hidden" name="bookId" value="@Model.Id" />
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="form-label" style="color: var(--pirate-gold);">Jumlah:</label>
+                            <input type="number" name="quantity" class="form-control" value="1" min="1" max="@Model.Stock" />
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-pirate btn-lg">
+                            <i class="fas fa-cart-plus"></i> Tambah ke Keranjang
+                        </button>
+                        <a asp-action="Catalog" class="btn btn-treasure btn-lg">
+                            <i class="fas fa-arrow-left"></i> Kembali
+                        </a>
+                    </div>
+                </form>
+            }
+            else
+            {
+                <div class="d-flex gap-2">
+                    <button class="btn btn-secondary btn-lg" disabled>
+                        <i class="fas fa-times"></i> Stok Habis
+                    </button>
+                    <a asp-action="Catalog" class="btn btn-treasure btn-lg">
+                        <i class="fas fa-arrow-left"></i> Kembali
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <hr class="my-4" style="border-color: var(--pirate-gold);">
+
+    <h4 style="color: var(--pirate-gold); font-weight: bold; margin-bottom: 20px;">
+        <i class="fas fa-info-circle"></i> Deskripsi
+    </h4>
+    <p style="color: white; line-height: 1.8; text-align: justify;">@Model.Description</p>
+</div>

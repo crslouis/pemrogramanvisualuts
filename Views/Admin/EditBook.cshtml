@@ -1,0 +1,106 @@
+@model GrandLineBooks.Models.Service
+@{
+    ViewData["Title"] = "Edit Layanan";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="admin-card">
+    <div class="admin-card-header">
+        <h4><i class="fas fa-edit"></i> Edit Layanan: @Model.Title</h4>
+        <a asp-action="Books" class="btn btn-admin-secondary">
+            <i class="fas fa-arrow-left"></i> Kembali
+        </a>
+    </div>
+
+    <form method="post" asp-action="EditBook" asp-route-id="@Model.Id">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Nama Layanan *</label>
+                    <input type="text" name="Title" class="admin-form-control" value="@Model.Title" required />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Jenis/Penyedia *</label>
+                    <input type="text" name="Author" class="admin-form-control" value="@Model.Author" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Kode SKU</label>
+                    <input type="text" name="ISBN" class="admin-form-control" value="@Model.ISBN" required />
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Kategori *</label>
+                    <select name="Category" class="admin-form-control" required>
+                        <option value="Fiksi" selected="@(Model.Category == "Fiksi")">Fiksi</option>
+                        <option value="Non-Fiksi" selected="@(Model.Category == "Non-Fiksi")">Non-Fiksi</option>
+                        <option value="Komik" selected="@(Model.Category == "Komik")">Komik</option>
+                        <option value="Novel" selected="@(Model.Category == "Novel")">Novel</option>
+                        <option value="Biografi" selected="@(Model.Category == "Biografi")">Biografi</option>
+                        <option value="Sejarah" selected="@(Model.Category == "Sejarah")">Sejarah</option>
+                        <option value="Teknologi" selected="@(Model.Category == "Teknologi")">Teknologi</option>
+                        <option value="Bisnis" selected="@(Model.Category == "Bisnis")">Bisnis</option>
+                        <option value="Self-Help" selected="@(Model.Category == "Self-Help")">Self-Help</option>
+                        <option value="Anak-anak" selected="@(Model.Category == "Anak-anak")">Anak-anak</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Tanggal Tersedia</label>
+                    <input type="date" name="PublishedDate" class="admin-form-control"
+                        value="@Model.PublishedDate.ToString("yyyy-MM-dd")" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Harga (Rp) *</label>
+                    <input type="number" name="Price" class="admin-form-control" value="@Model.Price" min="0"
+                        required />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Stok *</label>
+                    <input type="number" name="Stock" class="admin-form-control" value="@Model.Stock" min="0"
+                        required />
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-form-group">
+            <label class="admin-form-label">URL Gambar</label>
+            <input type="url" name="ImageUrl" class="admin-form-control" value="@Model.ImageUrl" />
+        </div>
+
+        <div class="admin-form-group">
+            <label class="admin-form-label">Deskripsi *</label>
+            <textarea name="Description" class="admin-form-control" rows="5" required>@Model.Description</textarea>
+        </div>
+
+        <input type="hidden" name="CreatedAt" value="@Model.CreatedAt" />
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-admin-primary">
+                <i class="fas fa-save"></i> Update Layanan
+            </button>
+            <a asp-action="Books" class="btn btn-secondary">
+                <i class="fas fa-times"></i> Batal
+            </a>
+        </div>
+    </form>
+</div>

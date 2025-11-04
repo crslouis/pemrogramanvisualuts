@@ -1,0 +1,115 @@
+@{
+    ViewData["Title"] = "Beranda";
+    Layout = "~/Views/Shared/_CustomerLayout.cshtml";
+}
+
+<div class="welcome-section">
+    <div class="pirate-icon">
+        <i class="fas fa-soap"></i>
+    </div>
+    <h1 class="welcome-title">✨ Selamat Datang di MarshaLaundryDb ✨</h1>
+    <div style="margin-top: -10px; margin-bottom: 10px;">
+        <span class="badge" style="background: linear-gradient(90deg, #ff9800 0%, #f44336 100%); color: #fff; border-radius: 999px; padding: 8px 16px; font-weight: 700;">
+            <i class="fas fa-bolt"></i> Flash Pickup & Delivery
+        </span>
+    </div>
+    <p class="welcome-subtitle">
+        Halo, <strong>@Context.Session.GetString("UserName")</strong>! Siap melanjutkan petualangan membaca?
+    </p>
+
+    <div class="row mt-5 g-4">
+        <div class="col-md-4">
+            <div class="card feature-card">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-shirt"></i>
+                    </div>
+                    <h5 class="card-title">Layanan Laundry</h5>
+                    <p class="card-text">Cuci-kering-lipat, setrika, dry clean, sepatu, tas, dan lainnya.</p>
+                    <a asp-action="Catalog" class="btn btn-pirate mt-2">
+                        <i class="fas fa-bubbles"></i> Lihat Layanan
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h5 class="card-title">Antar-Jemput Cepat</h5>
+                    <p class="card-text">Kurir siap jemput dan antar pakaian Anda tepat waktu.</p>
+                    <a asp-action="MyOrders" class="btn btn-treasure mt-2">
+                        <i class="fas fa-eye"></i> Lihat Pesanan
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-sparkles"></i>
+                    </div>
+                    <h5 class="card-title">Bersih & Wangi</h5>
+                    <p class="card-text">Detergen premium dan perawatan lembut hasil maksimal.</p>
+                    <a asp-action="Cart" class="btn btn-pirate mt-2">
+                        <i class="fas fa-cart-arrow-down"></i> Lihat Keranjang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <h3 class="section-title">🫧 Kenapa Memilih MarshaLaundryDb? 🫧</h3>
+            <div class="row mt-4 g-3">
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-truck-fast fa-3x text-primary mb-3"></i>
+                        <h5>Antar-Jemput Cepat</h5>
+                        <p class="text-muted small">Jemput-antar tepat waktu</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-shirt fa-3x text-success mb-3"></i>
+                        <h5>Perawatan Aman</h5>
+                        <p class="text-muted small">Pakaian aman & rapi</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-bubbles fa-3x text-warning mb-3"></i>
+                        <h5>Layanan Lengkap</h5>
+                        <p class="text-muted small">Cuci setrika sampai dry clean</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-box">
+                        <i class="fas fa-headset fa-3x text-danger mb-3"></i>
+                        <h5>Dukungan Ramah</h5>
+                        <p class="text-muted small">Siap bantu saat Anda butuh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .feature-box {
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .feature-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+</style>

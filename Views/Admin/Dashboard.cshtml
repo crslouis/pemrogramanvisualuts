@@ -1,0 +1,62 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="admin-card text-center" style="border-color: var(--laundry-blue);">
+            <i class="fas fa-bubbles fa-3x mb-3" style="color: var(--laundry-blue);"></i>
+            <h2 class="mb-1">@ViewBag.TotalBooks</h2>
+            <p class="text-muted mb-0">Total Layanan</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="admin-card text-center" style="border-color: var(--ocean-blue);">
+            <i class="fas fa-shopping-cart fa-3x mb-3" style="color: var(--ocean-blue);"></i>
+            <h2 class="mb-1">@ViewBag.TotalOrders</h2>
+            <p class="text-muted mb-0">Total Pesanan</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="admin-card text-center" style="border-color: var(--pirate-red);">
+            <i class="fas fa-users fa-3x mb-3" style="color: var(--pirate-red);"></i>
+            <h2 class="mb-1">@ViewBag.TotalUsers</h2>
+            <p class="text-muted mb-0">Total Customer</p>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="admin-card text-center" style="border-color: var(--straw-yellow);">
+            <i class="fas fa-clock fa-3x mb-3" style="color: var(--straw-yellow);"></i>
+            <h2 class="mb-1">@ViewBag.PendingOrders</h2>
+            <p class="text-muted mb-0">Pesanan Pending</p>
+        </div>
+    </div>
+</div>
+
+<div class="admin-card">
+    <div class="admin-card-header">
+        <h4><i class="fas fa-tachometer-alt"></i> Selamat Datang di Admin Panel!</h4>
+    </div>
+    <p class="lead">Gunakan menu di sidebar untuk mengelola sistem LaundryToko.</p>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <a asp-action="Books" class="btn btn-admin-primary w-100 mb-2">
+                <i class="fas fa-bubbles"></i> Kelola Layanan
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a asp-action="Orders" class="btn btn-admin-primary w-100 mb-2">
+                <i class="fas fa-shopping-cart"></i> Kelola Pesanan
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a asp-action="Users" class="btn btn-admin-primary w-100 mb-2">
+                <i class="fas fa-users"></i> Kelola User
+            </a>
+        </div>
+    </div>
+</div>

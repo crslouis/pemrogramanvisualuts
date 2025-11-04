@@ -1,0 +1,105 @@
+@model GrandLineBooks.Models.Service
+@{
+    ViewData["Title"] = "Tambah Layanan Baru";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="admin-card">
+    <div class="admin-card-header">
+        <h4><i class="fas fa-plus"></i> Tambah Layanan Baru</h4>
+        <a asp-action="Books" class="btn btn-admin-secondary">
+            <i class="fas fa-arrow-left"></i> Kembali
+        </a>
+    </div>
+
+    <form method="post" asp-action="CreateBook">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Nama Layanan *</label>
+                    <input type="text" name="Title" class="admin-form-control" placeholder="Nama layanan (mis. Cuci Setrika)"
+                        required />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Jenis/Penyedia *</label>
+                    <input type="text" name="Author" class="admin-form-control" placeholder="Jenis atau penyedia" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Kode SKU</label>
+                    <input type="text" name="ISBN" class="admin-form-control" placeholder="Opsional" />
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Kategori *</label>
+                    <select name="Category" class="admin-form-control" required>
+                        <option value="">Pilih Kategori</option>
+                        <option value="Fiksi">Fiksi</option>
+                        <option value="Non-Fiksi">Non-Fiksi</option>
+                        <option value="Komik">Komik</option>
+                        <option value="Novel">Novel</option>
+                        <option value="Biografi">Biografi</option>
+                        <option value="Sejarah">Sejarah</option>
+                        <option value="Teknologi">Teknologi</option>
+                        <option value="Bisnis">Bisnis</option>
+                        <option value="Self-Help">Self-Help</option>
+                        <option value="Anak-anak">Anak-anak</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Tanggal Tersedia</label>
+                    <input type="date" name="PublishedDate" class="admin-form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Harga (Rp) *</label>
+                    <input type="number" name="Price" class="admin-form-control" placeholder="0" min="0" required />
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="admin-form-group">
+                    <label class="admin-form-label">Stok *</label>
+                    <input type="number" name="Stock" class="admin-form-control" placeholder="0" min="0" required />
+                </div>
+            </div>
+        </div>
+
+        <div class="admin-form-group">
+            <label class="admin-form-label">URL Gambar</label>
+            <input type="url" name="ImageUrl" class="admin-form-control" placeholder="https://example.com/image.jpg" />
+            <small class="text-muted">Opsional: Link gambar layanan</small>
+        </div>
+
+        <div class="admin-form-group">
+            <label class="admin-form-label">Deskripsi *</label>
+            <textarea name="Description" class="admin-form-control" rows="5"
+                placeholder="Deskripsi singkat layanan (estimasi waktu, catatan, dll)" required></textarea>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-admin-primary">
+                <i class="fas fa-save"></i> Simpan Layanan
+            </button>
+            <a asp-action="Books" class="btn btn-secondary">
+                <i class="fas fa-times"></i> Batal
+            </a>
+        </div>
+    </form>
+</div>
